@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="66db1d45-7f91-4cf3-b68a-f3091d8c6a5c" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="helloworld_usecaseFlow" doc:id="43597e86-eadb-49a9-b71d-ca4452511a78" >
+		<http:listener doc:name="Listener" doc:id="52272d4a-5078-4b10-b263-ef593411a2c0" config-ref="HTTP_Listener_config" path="/helloworld"/>
+		<logger level="INFO" doc:name="Logger" doc:id="25d03a41-7011-4693-86c8-4ed00c3f6f88" message="************************* flow started ************************"/>
+		<set-payload value='#["Welcome to dell world"]' doc:name="Set Payload" doc:id="bcd8b06a-8d3a-4d9c-b8b3-91568348c4a8" />
+	</flow>
+</mule>
